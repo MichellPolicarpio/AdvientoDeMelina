@@ -567,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navMenu.classList.remove('active'); // Cierra el menú hamburguesa si está abierto
         if (isDay) {
             launchConfetti();
-            if ([5, 10, 15, 21, 24].includes(lastOpenedDay)) {
+            if ([10, 15, 21, 24].includes(lastOpenedDay)) {
                 launchBlizzard(3000);
             }
         }
