@@ -349,9 +349,19 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const aboutContent = `
         <div class="about-modal">
-            <h2>Acerca de</h2>
-            <div class="about-author">Michell Policarpio y Jessica Mora</div>
-            <div class="about-desc">Esto fue hecho con cariño por Jessica para Melina.</div>
+            <h2>✨ Acerca de este Calendario ✨</h2>
+            <div class="about-desc" style="margin-bottom: 20px; line-height: 1.6;">
+                Este calendario de adviento fue creado especialmente para ti, Melina.
+            </div>
+            <div class="about-desc" style="margin-bottom: 20px; line-height: 1.6;">
+                Cada día de diciembre guarda una sorpresa, un cupón o un mensaje especial pensado con mucho cariño.
+            </div>
+            <div class="about-author" style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(191, 161, 74, 0.3);">
+                Creado con ❤️ por<br>
+                <strong style="color: #bfa14a; font-size: 1.1em;">Jessica Mora</strong><br>
+                <span style="font-size: 0.9em; color: #888;">y</span><br>
+                <strong style="color: #bfa14a; font-size: 1.1em;">Michell Policarpio</strong>
+            </div>
         </div>
     `;
     const howToContent = `
