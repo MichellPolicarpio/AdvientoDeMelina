@@ -377,11 +377,10 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     const victorContent = `
         <div class="victor-modal">
-            <span style="font-size:1.1em;">✨</span> <span class="victor-underline">Melina</span> ✨<br>
-            <span style="font-size:1.1em;">Este calendario es más que un proyecto:<br>
-            es un pedacito de mi corazón hecho regalo para ti.</span><br><br>
-            <span style="font-size:1.2em;">Quiero que cada día te haga sentir tan especial<br>como tú me haces sentir a mí.</span><br><br>
-            <span style="font-size:1.3em;">Felices fiestas, mi amor. 🎄❤️</span>
+            <span style="font-size:1.1em;">✨</span> <span class="victor-underline">Melina</span> ✨<br><br>
+            <span style="font-size:1.1em;">Te envío este calendario porque quiero hacer de estas fechas algo muy bonito y especial.</span><br><br>
+            <span style="font-size:1.1em;">Cada detallito es un poquito del amor que siento por ti.</span><br><br>
+            <span style="font-size:1.2em;">Felices fiestas, mailof 🎄❤️</span>
         </div>
     `;
 
