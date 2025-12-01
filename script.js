@@ -350,14 +350,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const aboutContent = `
         <div class="about-modal">
             <h2>Acerca de</h2>
-            <div class="about-author">Michell Policarpio</div>
-            <div class="about-desc">Proyecto web personal hecho con dedicación y cariño.</div>
-            <strong style="color:#bfa14a;">Tecnologías utilizadas:</strong>
-            <ul class="about-tech-list">
-                <li><span class="tech-icon">🔵</span> HTML5</li>
-                <li><span class="tech-icon">🎨</span> CSS3</li>
-                <li><span class="tech-icon">✨</span> JavaScript (ES6+)</li>
-            </ul>
+            <div class="about-author">Michell Policarpio y Jessica Mora</div>
+            <div class="about-desc">Esto fue hecho con cariño por Jessica para Melina.</div>
         </div>
     `;
     const howToContent = `
