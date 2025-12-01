@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="about-author" style="margin-top: 25px; padding-top: 20px; border-top: 1px solid rgba(191, 161, 74, 0.3);">
                 Creado con ❤️ por<br>
                 <strong style="color: #bfa14a; font-size: 1.1em;">Jessica Mora</strong><br>
-                <span style="font-size: 0.9em; color: #888;">y</span><br>
+                <span style="font-size: 0.9em; color: #888;">en colaboración con</span><br>
                 <strong style="color: #bfa14a; font-size: 1.1em;">Michell Policarpio</strong>
             </div>
         </div>
