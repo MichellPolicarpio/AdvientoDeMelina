@@ -797,7 +797,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (day >= 1 && day <= 24 && isSeason) {
             linkPrefetch(`Iconos_gif_dias/${day}.gif`);
             linkPrefetch(`Iconos_gif_dias/${next}.gif`);
-            const couponImages = { 2: 'Regalo_Cupones/Dia2.png', 8: 'Regalo_Cupones/Dia8.png', 11: 'Regalo_Cupones/Dia11.png', 14: 'Regalo_Cupones/Dia14.png' };
+            const couponImages = { 1: 'Regalo_Cupones/Dia1.png', 2: 'Regalo_Cupones/Dia2.png', 3: 'Regalo_Cupones/Dia3.png', 4: 'Regalo_Cupones/Dia4.png', 5: 'Regalo_Cupones/Dia5.png', 6: 'Regalo_Cupones/Dia6.png', 8: 'Regalo_Cupones/Dia8.png', 11: 'Regalo_Cupones/Dia11.png', 14: 'Regalo_Cupones/Dia14.png' };
             if (couponImages[day]) linkPrefetch(couponImages[day]);
             if (couponImages[next]) linkPrefetch(couponImages[next]);
         }
@@ -821,72 +821,15 @@ document.addEventListener('DOMContentLoaded', () => {
         isSoundOn = false;
     });
 
-    // Optimización: reemplazar GIFs por video WebM con fallback y lazy-init
+    // Optimización: mantener GIFs (los .webm no están disponibles)
     (function optimizeDayMedia() {
         const squares = document.querySelectorAll('.day-square');
-        squares.forEach((sq, idx) => {
+        squares.forEach((sq) => {
             const img = sq.querySelector('img');
             if (!img) return;
-            // Optimiza el <img> existente por si se mantiene como fallback
+            // Optimiza el <img> existente
             img.loading = 'lazy';
             img.decoding = 'async';
-            const match = (img.getAttribute('src') || '').match(/Iconos_gif_dias\/(\d+)\.gif$/);
-            const index = match ? parseInt(match[1], 10) : (idx + 1);
-
-            const video = document.createElement('video');
-            video.muted = true;
-            video.autoplay = true;
-            video.loop = true;
-            video.playsInline = true;
-            video.preload = 'metadata';
-            video.width = 150;
-            video.height = 150;
-            video.style.width = '100%';
-            video.style.height = '100%';
-            video.style.objectFit = 'contain';
-
-            const source = document.createElement('source');
-            source.type = 'video/webm';
-            source.src = `Iconos_gif_dias/${index}.webm`;
-            video.appendChild(source);
-
-            const useFallback = () => {
-                if (!sq.contains(img)) {
-                    // reinsert fallback if video was there
-                    sq.innerHTML = '';
-                    img.loading = 'lazy';
-                    img.decoding = 'async';
-                    img.width = 150;
-                    img.height = 150;
-                    img.style.width = '100%';
-                    img.style.height = '100%';
-                    img.style.objectFit = 'contain';
-                    sq.appendChild(img);
-                }
-            };
-            source.addEventListener('error', useFallback);
-            video.addEventListener('error', useFallback);
-
-            // Lazy-init cuando el card es visible
-            if ('IntersectionObserver' in window) {
-                const io = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            video.load();
-                            video.play().catch(() => {});
-                            obs.unobserve(entry.target);
-                        }
-                    });
-                }, { rootMargin: '200px' });
-                io.observe(sq);
-            }
-
-            try {
-                sq.replaceChild(video, img);
-            } catch (_) {
-                // si no se puede reemplazar, añádelo al final
-                sq.appendChild(video);
-            }
         });
     })();
 
