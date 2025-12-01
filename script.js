@@ -467,12 +467,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (underline) underline.classList.add('animated');
             }, 50);
         } else if (typeof content === 'object' && content !== null && content.type === 'image') {
+            // Verificar si existe versión WebP para optimización
             const webpSrc = content.src.replace(/\.png$/i, '.webp');
-            modalBody.innerHTML = `
-                <picture>
-                    <source type="image/webp" srcset="${webpSrc}">
-                    <img src="${content.src}" alt="Cupón del día" loading="lazy" decoding="async" fetchpriority="low">
-                </picture>`;
+            const hasWebP = content.src.includes('Dia8') || content.src.includes('Dia11') || content.src.includes('Dia14');
+            
+            modalBody.innerHTML = '';
+            const img = document.createElement('img');
+            img.src = content.src;
+            img.alt = 'Cupón del día';
+            img.style.cssText = 'width: 100%; height: auto; max-width: 100%; display: block; margin: 0 auto; object-fit: contain;';
+            img.loading = 'lazy';
+            img.decoding = 'async';
+            
+            // Manejo de errores
+            img.onerror = function() {
+                console.error('Error cargando imagen:', content.src);
+                this.style.display = 'none';
+                modalBody.innerHTML = `<p style="color: white; padding: 20px;">Error al cargar la imagen: ${content.src}</p>`;
+            };
+            
+            if (hasWebP) {
+                const picture = document.createElement('picture');
+                const source = document.createElement('source');
+                source.type = 'image/webp';
+                source.srcset = webpSrc;
+                picture.appendChild(source);
+                picture.appendChild(img);
+                modalBody.appendChild(picture);
+            } else {
+                modalBody.appendChild(img);
+            }
+            
             modal.classList.add('image-modal');
             if (content.size === 'large') {
                 modal.classList.add('large-image');
@@ -508,7 +533,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Extras para relación a distancia y guiños en polaco
         if (isDay && typeof lastOpenedDay === 'number' && modalType === null) {
             const extras = {
-                3: ["Si estamos lejos hoy:", "paseo virtual por Cracovia."],
                 9: ["Si estamos lejos:", "verla en simultáneo por videollamada."],
                 10: ["Si estamos lejos:", "cocinamos la misma receta por videollamada."],
                 15: ["Si estamos lejos:", "cena a distancia con el mismo menú."],
@@ -868,73 +892,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Override creativo de mensajes (dedicatorias y tarjetas animadas)
     window.__overrideMessages = [
-        { type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 1 — Comienzo</h3>
-                <div class="poem-content">
-                    <div class="verse">Empieza diciembre y contigo,</div>
-                    <div class="verse">empieza también mi sonrisa.</div>
-                    <div class="verse">Cada día a tu lado</div>
-                    <div class="verse">es un pequeño milagro.</div>
-                    <div class="verse">Hoy te regalo presencia,</div>
-                    <div class="verse">cariño y ganas de verte.</div>
-                </div>
-                <div class="poem-signature">Con amor, de mí para ti.</div>
-            </div>
-        ` },
+        { type: 'image', src: 'Regalo_Cupones/Dia1.png' },
         { type: 'image', src: 'Regalo_Cupones/Dia2.png' },
-        { type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 3 — Luces</h3>
-                <div class="poem-content">
-                    <div class="verse">Cuando se encienden las luces,</div>
-                    <div class="verse">brilla tu risa también.</div>
-                    <div class="verse">Si caminas a mi lado,</div>
-                    <div class="verse">la ciudad parece un cuento.</div>
-                    <div class="verse">Cupón válido por paseo nocturno</div>
-                    <div class="verse">y fotos abrazados.</div>
-                </div>
-                <div class="poem-signature">¿Vamos a ver luces?</div>
-            </div>
-        ` },
-        { type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 4 — Dulzura</h3>
-                <div class="poem-content">
-                    <div class="verse">Un detalle de azúcar,</div>
-                    <div class="verse">y otro de canela.</div>
-                    <div class="verse">Para un corazón dulce,</div>
-                    <div class="verse">mi mejor receta: quererte.</div>
-                    <div class="verse">Cupón: tu postre favorito,</div>
-                    <div class="verse">hecho o comprado, pero contigo.</div>
-                </div>
-                <div class="poem-signature">Tú eliges el antojo.</div>
-            </div>
-        ` },
-        { type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 5 — Nuestro rincón</h3>
-                <div class="poem-content">
-                    <div class="verse">Decoremos un recuerdo,</div>
-                    <div class="verse">un detalle para nosotros.</div>
-                    <div class="verse">Cupón: elegir un adorno</div>
-                    <div class="verse">que cuente nuestra historia.</div>
-                </div>
-                <div class="poem-signature">Lo guardamos cada año.</div>
-            </div>
-        ` },
-        { type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 6 — Deseo</h3>
-                <div class="poem-content">
-                    <div class="verse">Pide algo en secreto,</div>
-                    <div class="verse">yo pongo el corazón.</div>
-                    <div class="verse">Cupón: un deseo tuyo,</div>
-                    <div class="verse">y todo mi empeño.</div>
-                </div>
-                <div class="poem-signature">Hecho con cariño.</div>
-            </div>
-        ` },
+        { type: 'image', src: 'Regalo_Cupones/Dia3.png' },
+        { type: 'image', src: 'Regalo_Cupones/Dia4.png' },
+        { type: 'image', src: 'Regalo_Cupones/Dia5.png' },
+        { type: 'image', src: 'Regalo_Cupones/Dia6.png' },
         // 7 — Poema original (se mantiene)
         `<div class="poem-container">
             <h3 class="poem-title">POR ALGO</h3>
