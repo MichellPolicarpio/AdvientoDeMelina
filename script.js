@@ -800,7 +800,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (day >= 1 && day <= 24 && isSeason) {
             linkPrefetch(`Iconos_gif_dias/${day}.gif`);
             linkPrefetch(`Iconos_gif_dias/${next}.gif`);
-            const couponImages = { 1: 'Regalo_Cupones/Dia1.png', 2: 'Regalo_Cupones/Dia2.png', 3: 'Regalo_Cupones/Dia3.png', 4: 'Regalo_Cupones/Dia4.png', 5: 'Regalo_Cupones/Dia5.png', 6: 'Regalo_Cupones/Dia6.png', 8: 'Regalo_Cupones/Dia8.png', 11: 'Regalo_Cupones/Dia11.png', 14: 'Regalo_Cupones/Dia14.png' };
+            const couponImages = { 1: 'Regalo_Cupones/Dia1.png', 2: 'Regalo_Cupones/Dia2.png', 3: 'Regalo_Cupones/Dia3.png', 4: 'Regalo_Cupones/Dia4.png', 5: 'Regalo_Cupones/Dia5.png', 6: 'Regalo_Cupones/Dia6.png', 7: 'Regalo_Cupones/Dia7.png', 8: 'Regalo_Cupones/Dia8.png', 9: 'Regalo_Cupones/Dia9.png', 10: 'Regalo_Cupones/Dia10.png', 11: 'Regalo_Cupones/Dia11.png', 14: 'Regalo_Cupones/Dia14.png' };
             if (couponImages[day]) linkPrefetch(couponImages[day]);
             if (couponImages[next]) linkPrefetch(couponImages[next]);
         }
