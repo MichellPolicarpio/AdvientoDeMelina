@@ -472,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (typeof content === 'object' && content !== null && content.type === 'image') {
             // Verificar si existe versión WebP para optimización
             const webpSrc = content.src.replace(/\.png$/i, '.webp');
-            const hasWebP = content.src.includes('Dia8') || content.src.includes('Dia11') || content.src.includes('Dia14');
+            const hasWebP = content.src.includes('Dia7') || content.src.includes('Dia8') || content.src.includes('Dia9') || content.src.includes('Dia10') || content.src.includes('Dia11') || content.src.includes('Dia14');
             
             modalBody.innerHTML = '';
             const img = document.createElement('img');
