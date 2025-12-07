@@ -490,10 +490,13 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             
             if (hasWebP) {
+                // Intentar cargar WebP primero, PNG como fallback
                 const picture = document.createElement('picture');
                 const source = document.createElement('source');
                 source.type = 'image/webp';
                 source.srcset = webpSrc;
+                // No establecer img.src hasta después para que el navegador intente WebP primero
+                img.src = content.src; // Fallback PNG
                 picture.appendChild(source);
                 picture.appendChild(img);
                 modalBody.appendChild(picture);
