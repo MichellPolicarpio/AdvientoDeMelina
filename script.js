@@ -844,50 +844,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { type: 'image', src: 'Regalo_Cupones/Dia4.png' },
         { type: 'image', src: 'Regalo_Cupones/Dia5.png' },
         { type: 'image', src: 'Regalo_Cupones/Dia6.png' },
-        // 7 — Poema original (se mantiene)
-        `<div class="poem-container">
-            <h3 class="poem-title">POR ALGO</h3>
-            <div class="poem-content">
-                <div class="verse">Por algo nos encontramos,</div>
-                <div class="verse">por algo coincidimos,</div>
-                <div class="verse">por algo es que entre tantas personas</div>
-                <div class="verse">decidí acercarme a ti,</div>
-                <div class="verse">por algo es que mis ojos te buscan,</div>
-                <div class="verse">por algo es que mis latidos te nombran,</div>
-                <div class="verse">por algo es que mi piel te anhela,</div>
-                <div class="verse">por algo es que mi lealtad te pertenece,</div>
-                <div class="verse">algo hemos de tener,</div>
-                <div class="verse">algo hermoso,</div>
-                <div class="verse">algo has de ser en mi vida,</div>
-                <div class="verse">algo o quizá todo.</div>
-            </div>
-            <div class="poem-signature">Te quiero, Melina.</div>
-        </div>`,
+        { type: 'image', src: 'Regalo_Cupones/Dia7.png' },
         { type: 'image', src: 'Regalo_Cupones/Dia8.png', size: 'large' },
-        { type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 9 — Pijamada</h3>
-                <div class="poem-content">
-                    <div class="verse">Pijama, cobija y palomitas,</div>
-                    <div class="verse">tu saga favorita en loop.</div>
-                    <div class="verse">Cupón: maratón contigo,</div>
-                    <div class="verse">pausas para besos.</div>
-                </div>
-                <div class="poem-signature">Yo llevo las ganas.</div>
-            </div>
-        ` },
-        { type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 10 — Galletas</h3>
-                <div class="poem-content">
-                    <div class="verse">Harina en la nariz,</div>
-                    <div class="verse">risas en la mesa.</div>
-                    <div class="verse">Cupón: hornear galletas,</div>
-                    <div class="verse">o escaparnos por unas.</div>
-                </div>
-                <div class="poem-signature">El ingrediente eres tú.</div>
-            </div>
-        ` },
+        { type: 'image', src: 'Regalo_Cupones/Dia9.png' },
+        { type: 'image', src: 'Regalo_Cupones/Dia10.png' },
         { type: 'image', src: 'Regalo_Cupones/Dia11.png' },
         { type: 'html', html: `
             <div class="poem-container theme-blue">
