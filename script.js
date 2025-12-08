@@ -539,7 +539,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Extras para relación a distancia y guiños en polaco
         if (isDay && typeof lastOpenedDay === 'number' && modalType === null) {
             const extras = {
-                9: ["Si estamos lejos:", "verla en simultáneo por videollamada."],
                 10: ["Si estamos lejos:", "cocinamos la misma receta por videollamada."],
                 15: ["Si estamos lejos:", "cena a distancia con el mismo menú."],
                 16: ["Si estamos lejos:", "miramos la misma luna por videollamada."],
