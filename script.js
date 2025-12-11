@@ -472,7 +472,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (typeof content === 'object' && content !== null && content.type === 'image') {
             // Verificar si existe versión WebP para optimización
             const webpSrc = content.src.replace(/\.png$/i, '.webp');
-            const hasWebP = content.src.includes('Dia7') || content.src.includes('Dia8') || content.src.includes('Dia9') || content.src.includes('Dia10') || content.src.includes('Dia11') || content.src.includes('Dia14');
+            const hasWebP = content.src.includes('Dia7') || content.src.includes('Dia8') || content.src.includes('Dia9') || content.src.includes('Dia10') || content.src.includes('Dia11') || content.src.includes('Dia12') || content.src.includes('Dia13') || content.src.includes('Dia14') || content.src.includes('Dia15');
             
             modalBody.innerHTML = '';
             const img = document.createElement('img');
@@ -801,7 +801,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (day >= 1 && day <= 24 && isSeason) {
             linkPrefetch(`Iconos_gif_dias/${day}.gif`);
             linkPrefetch(`Iconos_gif_dias/${next}.gif`);
-            const couponImages = { 1: 'Regalo_Cupones/Dia1.png', 2: 'Regalo_Cupones/Dia2.png', 3: 'Regalo_Cupones/Dia3.png', 4: 'Regalo_Cupones/Dia4.png', 5: 'Regalo_Cupones/Dia5.png', 6: 'Regalo_Cupones/Dia6.png', 7: 'Regalo_Cupones/Dia7.png', 8: 'Regalo_Cupones/Dia8.png', 9: 'Regalo_Cupones/Dia9.png', 10: 'Regalo_Cupones/Dia10.png', 11: 'Regalo_Cupones/Dia11.png', 14: 'Regalo_Cupones/Dia14.png' };
+            const couponImages = {
+                1: 'Regalo_Cupones/Dia1.png',
+                2: 'Regalo_Cupones/Dia2.png',
+                3: 'Regalo_Cupones/Dia3.png',
+                4: 'Regalo_Cupones/Dia4.png',
+                5: 'Regalo_Cupones/Dia5.png',
+                6: 'Regalo_Cupones/Dia6.png',
+                7: 'Regalo_Cupones/Dia7.png',
+                8: 'Regalo_Cupones/Dia8.png',
+                9: 'Regalo_Cupones/Dia9.png',
+                10: 'Regalo_Cupones/Dia10.png',
+                11: 'Regalo_Cupones/Dia11.png',
+                12: 'Regalo_Cupones/Dia12.png',
+                13: 'Regalo_Cupones/Dia13.png',
+                14: 'Regalo_Cupones/Dia14.png',
+                15: 'Regalo_Cupones/Dia15.png'
+            };
             if (couponImages[day]) linkPrefetch(couponImages[day]);
             if (couponImages[next]) linkPrefetch(couponImages[next]);
         }
@@ -850,48 +866,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { type: 'image', src: 'Regalo_Cupones/Dia9.png' },
         { type: 'image', src: 'Regalo_Cupones/Dia10.png' },
         { type: 'image', src: 'Regalo_Cupones/Dia11.png' },
-        { type: 'html', html: `
-            <div class="poem-container theme-blue">
-                <h3 class="poem-title">DÍA 12</h3>
-                <div class="poem-content">
-                    <div class="verse" style="font-size: 1.15em; color: #FFD700; margin-bottom: 15px;">¿Qué soy?</div>
-                    <div class="verse">Soy un recordatorio constante</div>
-                    <div class="verse">de que pensé en ti al elegir este regalo.</div>
-                    <div class="verse" style="margin-top: 15px;">Cuando veas las 11:11,</div>
-                    <div class="verse">sabrás que estoy pensando en ti.</div>
-                    <div class="verse" style="margin-top: 15px;">Vivo en tu muñeca,</div>
-                    <div class="verse">y cada hora te recuerdo</div>
-                    <div class="verse">que eres mi deseo cumplido.</div>
-                    <div class="verse" style="margin-top: 20px; font-size: 1.2em; color: #C792EA;">✨ Cuando me abras, lo sabrás ✨</div>
-                </div>
-                <div class="poem-signature">La respuesta está en el regalo...</div>
-            </div>
-        ` },
-        { type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 13 — Detalle</h3>
-                <div class="poem-content">
-                    <div class="verse">Un antojo tuyo hoy,</div>
-                    <div class="verse">sin preguntas ni peros.</div>
-                    <div class="verse">Cupón: tu snack favorito,</div>
-                    <div class="verse">y una mirada cómplice.</div>
-                </div>
-                <div class="poem-signature">Yo invito.</div>
-            </div>
-        ` },
+        { type: 'image', src: 'Regalo_Cupones/Dia12.png' },
+        { type: 'image', src: 'Regalo_Cupones/Dia13.png' },
         { type: 'image', src: 'Regalo_Cupones/Dia14.png', size: 'large' },
-        { type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 15 — Cena</h3>
-                <div class="poem-content">
-                    <div class="verse">Mesa sencilla,</div>
-                    <div class="verse">luz bajita.</div>
-                    <div class="verse">Cupón: cena en casa,</div>
-                    <div class="verse">y baile en la cocina.</div>
-                </div>
-                <div class="poem-signature">Yo preparo, tú apruebas.</div>
-            </div>
-        ` },
+        { type: 'image', src: 'Regalo_Cupones/Dia15.png' },
         { type: 'html', html: `
             <div class="poem-container">
                 <h3 class="poem-title">DÍA 16 — Estrellas</h3>
