@@ -278,11 +278,11 @@ document.addEventListener('DOMContentLoaded', () => {
         /* 17 - Vela navideña */ { type: 'image', src: 'Regalo_Cupones/Dia17.png' },
         /* 18 - Churros y chocolate */ { type: 'image', src: 'Regalo_Cupones/Dia18.png' },
         /* 19 - Guantes */ { type: 'image', src: 'Regalo_Cupones/Dia19.png' },
-        /* 20 - Música */ "Esta melodía me hace pensar en ti. Te regalo esta canción: [Nombre de la canción o enlace].",
-        /* 21 - Postre con canela */ "Un toque de especia para nuestra vida. Válido para que probemos juntos una receta nueva de algún postre exótico.",
-        /* 22 - Esfera de nieve */ "Nuestro pequeño mundo en una esfera. Este cupón es válido para una tarde de ver nuestras fotos favoritas del año.",
-        /* 23 - Muffin */ "¡Casi, casi es Navidad! Válido por un desayuno especial en la cama, preparado por mí.",
-        /* 24 - Bolsa misteriosa */ "🎁 ¡FELIZ NOCHEBUENA! 🎁 Has llegado al final del calendario. Hoy te espera algo muy especial pensado con todo mi amor para ti."
+        /* 20 - Música */ { type: 'image', src: 'Regalo_Cupones/Dia20.png' },
+        /* 21 - Postre con canela */ { type: 'image', src: 'Regalo_Cupones/Dia21.png' },
+        /* 22 - Esfera de nieve */ { type: 'image', src: 'Regalo_Cupones/Dia22.png' },
+        /* 23 - Muffin */ { type: 'image', src: 'Regalo_Cupones/Dia23.png' },
+        /* 24 - Bolsa misteriosa */ { type: 'image', src: 'Regalo_Cupones/Dia24.png' }
     ];
 
     // Selector de mensaje (permite override creativo sin tocar el array original)
@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (typeof content === 'object' && content !== null && content.type === 'image') {
             // Verificar si existe versión WebP para optimización
             const webpSrc = content.src.replace(/\.png$/i, '.webp');
-            const hasWebP = content.src.includes('Dia7') || content.src.includes('Dia8') || content.src.includes('Dia9') || content.src.includes('Dia10') || content.src.includes('Dia11') || content.src.includes('Dia12') || content.src.includes('Dia13') || content.src.includes('Dia14') || content.src.includes('Dia15') || content.src.includes('Dia16') || content.src.includes('Dia17') || content.src.includes('Dia18') || content.src.includes('Dia19');
+            const hasWebP = content.src.includes('Dia7') || content.src.includes('Dia8') || content.src.includes('Dia9') || content.src.includes('Dia10') || content.src.includes('Dia11') || content.src.includes('Dia12') || content.src.includes('Dia13') || content.src.includes('Dia14') || content.src.includes('Dia15') || content.src.includes('Dia16') || content.src.includes('Dia17') || content.src.includes('Dia18') || content.src.includes('Dia19') || content.src.includes('Dia20') || content.src.includes('Dia21') || content.src.includes('Dia22') || content.src.includes('Dia23') || content.src.includes('Dia24');
 
             modalBody.innerHTML = '';
             const img = document.createElement('img');
@@ -652,50 +652,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Desbloqueo activo para diciembre (mes 11 en JS)
             if (allDaysUnlocked || (currentMonth === 11 && currentDay >= day)) {
-                // Lógica especial para el día 24 (bolsa misteriosa)
-                if (day === 24) {
-                    const now = new Date();
-                    const currentHour = now.getHours();
-                    const currentMinute = now.getMinutes();
-                    const targetHour = 23; // 11 PM
-                    const targetMinute = 42; // 42 minutos
-
-                    // Verificar si es 11:42 PM o después (o si todos los días están desbloqueados)
-                    const isTimeToOpen = allDaysUnlocked ||
-                        (currentHour > targetHour || (currentHour === targetHour && currentMinute >= targetMinute));
-
-                    if (isTimeToOpen) {
-                        playUnlockSound();
-                        unlockDay(day);
-                        openModalWithMessage(getMessage(day), true);
-                    } else {
-                        // Mostrar mensaje de espera misterioso
-                        playCardClickSound();
-                        navMenu.classList.remove('active');
-                        const waitMessage = {
-                            type: 'html',
-                            html: `
-                                <div class="poem-container theme-purple">
-                                    <h3 class="poem-title">⏰ BOLSA MISTERIOSA ⏰</h3>
-                                    <div class="poem-content">
-                                        <div class="verse">Esta bolsa guarda un secreto especial,</div>
-                                        <div class="verse">pero tiene su momento mágico para abrirse.</div>
-                                        <div class="verse">Debes esperar hasta las 11:42 PM</div>
-                                        <div class="verse">para descubrir qué hay dentro.</div>
-                                        <div class="verse" style="margin-top: 15px; font-size: 1.2em;">⏳ La paciencia es parte del misterio ⏳</div>
-                                        <div class="verse" style="margin-top: 10px; color: #FFD700;">Hora actual: ${String(currentHour).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}</div>
-                                    </div>
-                                    <div class="poem-signature">El tiempo lo es todo...</div>
-                                </div>
-                            `
-                        };
-                        openModalWithMessage(waitMessage, true);
-                    }
-                } else {
-                    playUnlockSound();
-                    unlockDay(day);
-                    openModalWithMessage(getMessage(day), true);
-                }
+                playUnlockSound();
+                unlockDay(day);
+                openModalWithMessage(getMessage(day), true);
             } else {
                 playCardClickSound();
                 // Asegura que el menú no quede sobre el modal
@@ -797,74 +756,11 @@ document.addEventListener('DOMContentLoaded', () => {
         { type: 'image', src: 'Regalo_Cupones/Dia17.png' },
         { type: 'image', src: 'Regalo_Cupones/Dia18.png' },
         { type: 'image', src: 'Regalo_Cupones/Dia19.png' },
-        {
-            type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 20 — Canción</h3>
-                <div class="poem-content">
-                    <div class="verse">Hay música en tu risa,</div>
-                    <div class="verse">y calma en tu voz.</div>
-                    <div class="verse">Cupón: te dedico una canción,</div>
-                    <div class="verse">y la bailamos juntos.</div>
-                </div>
-                <div class="poem-signature">El ritmo lo pones tú.</div>
-            </div>
-        ` },
-        {
-            type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 21 — Receta</h3>
-                <div class="poem-content">
-                    <div class="verse">Picamos risas,</div>
-                    <div class="verse">mezclamos abrazos.</div>
-                    <div class="verse">Cupón: probar una receta,</div>
-                    <div class="verse">que tenga tu toque.</div>
-                </div>
-                <div class="poem-signature">Chef corazón.</div>
-            </div>
-        ` },
-        {
-            type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 22 — Recuerdos</h3>
-                <div class="poem-content">
-                    <div class="verse">Abramos el álbum,</div>
-                    <div class="verse">revivamos momentos.</div>
-                    <div class="verse">Cupón: tarde de fotos,</div>
-                    <div class="verse">y planes para nuevos.</div>
-                </div>
-                <div class="poem-signature">Nuestra colección.</div>
-            </div>
-        ` },
-        {
-            type: 'html', html: `
-            <div class="poem-container">
-                <h3 class="poem-title">DÍA 23 — Desayuno</h3>
-                <div class="poem-content">
-                    <div class="verse">Amanecer contigo,</div>
-                    <div class="verse">sabe a domingo.</div>
-                    <div class="verse">Cupón: desayuno en cama,</div>
-                    <div class="verse">y mil te quiero.</div>
-                </div>
-                <div class="poem-signature">Yo llevo la bandeja.</div>
-            </div>
-        ` },
-        {
-            type: 'html', html: `
-            <div class="poem-container theme-purple">
-                <h3 class="poem-title">🎁 DÍA 24 — BOLSA MISTERIOSA 🎁</h3>
-                <div class="poem-content">
-                    <div class="verse">¡Feliz Nochebuena, mi amor!</div>
-                    <div class="verse">Has llegado al final del calendario.</div>
-                    <div class="verse" style="margin-top: 15px; font-size: 1.2em; color: #FFD700;">✨ ¡Es hora de abrir tu bolsa misteriosa! ✨</div>
-                    <div class="verse" style="margin-top: 15px;">Dentro encontrarás algo especial</div>
-                    <div class="verse">que elegí pensando en ti.</div>
-                    <div class="verse" style="margin-top: 15px; font-size: 1.1em;">Espero que te guste tanto</div>
-                    <div class="verse">como me gusta verte sonreír.</div>
-                </div>
-                <div class="poem-signature">Con todo mi amor, siempre. 💝</div>
-            </div>
-        ` }
+        { type: 'image', src: 'Regalo_Cupones/Dia20.png' },
+        { type: 'image', src: 'Regalo_Cupones/Dia21.png' },
+        { type: 'image', src: 'Regalo_Cupones/Dia22.png' },
+        { type: 'image', src: 'Regalo_Cupones/Dia23.png' },
+        { type: 'image', src: 'Regalo_Cupones/Dia24.png' }
     ];
 
     // Inicializar contador de progreso
