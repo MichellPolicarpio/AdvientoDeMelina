@@ -349,22 +349,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const container = document.getElementById('confetti-container');
         if (!container) return;
 
-        // Rango de parámetros (con valores por defecto)
-        const countMin = (opts.countRange && opts.countRange[0]) ?? 16;
-        const countMax = (opts.countRange && opts.countRange[1]) ?? 31;
-        const nextMin = (opts.burstIntervalRange && opts.burstIntervalRange[0]) ?? 140; // ms
-        const nextMax = (opts.burstIntervalRange && opts.burstIntervalRange[1]) ?? 300; // ms
-        const sizeMin = (opts.sizeRange && opts.sizeRange[0]) ?? 3; // px
-        const sizeMax = (opts.sizeRange && opts.sizeRange[1]) ?? 8; // px
-        const driftMin = (opts.driftRange && opts.driftRange[0]) ?? -40; // px
-        const driftMax = (opts.driftRange && opts.driftRange[1]) ?? 40; // px
-        const durMin = (opts.durRange && opts.durRange[0]) ?? 1200; // ms
-        const durMax = (opts.durRange && opts.durRange[1]) ?? 2600; // ms
+        // Detectar móvil para optimizar rendimiento
+        const isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+        // Rango de parámetros (optimizados para móvil)
+        const countMin = isMobile ? 4 : ((opts.countRange && opts.countRange[0]) ?? 16);
+        const countMax = isMobile ? 8 : ((opts.countRange && opts.countRange[1]) ?? 31);
+        const nextMin = isMobile ? 250 : ((opts.burstIntervalRange && opts.burstIntervalRange[0]) ?? 140);
+        const nextMax = isMobile ? 400 : ((opts.burstIntervalRange && opts.burstIntervalRange[1]) ?? 300);
+        const sizeMin = (opts.sizeRange && opts.sizeRange[0]) ?? 3;
+        const sizeMax = (opts.sizeRange && opts.sizeRange[1]) ?? 8;
+        const driftMin = (opts.driftRange && opts.driftRange[0]) ?? -40;
+        const driftMax = (opts.driftRange && opts.driftRange[1]) ?? 40;
+        const durMin = (opts.durRange && opts.durRange[0]) ?? 1200;
+        const durMax = (opts.durRange && opts.durRange[1]) ?? 2600;
+
+        // Reducir duración en móviles
+        const actualDuration = isMobile ? Math.min(durationMs, 1500) : durationMs;
 
         const start = performance.now();
         const spawn = () => {
             const now = performance.now();
-            if (now - start > durationMs) return; // cortar spawns
+            if (now - start > actualDuration) return; // cortar spawns
 
             // Cantidad por ráfaga (aleatoria dentro de un rango)
             const count = countMin + Math.floor(Math.random() * Math.max(1, (countMax - countMin + 1)));
@@ -490,8 +496,8 @@ document.addEventListener('DOMContentLoaded', () => {
         navMenu.classList.remove('active'); // Cierra el menú hamburguesa si está abierto
         if (isDay) {
             launchConfetti();
-            if ([10, 15, 21, 24].includes(lastOpenedDay)) {
-                launchBlizzard(3000);
+            if (lastOpenedDay === 24) {
+                launchBlizzard(2000);
             }
         }
     };
